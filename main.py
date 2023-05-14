@@ -4,8 +4,8 @@ import logging
 
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message, ContentType
-from settings import settings
-from handlers.basic import get_start, get_photo, get_hello
+from core.settings import settings
+from core.handlers.basic import get_start, get_photo, get_hello
 from aiogram.filters import  Command
 from aiogram import F
 
