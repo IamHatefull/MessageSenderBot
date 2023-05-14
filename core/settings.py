@@ -21,5 +21,5 @@ def get_settings(path: str):
         )
     )
 
-settings = get_settings('input')
+settings = get_settings('input.txt')
 #print(settings)
