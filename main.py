@@ -4,10 +4,13 @@ import logging
 
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message, ContentType
-from core.settings import settings
-from core.handlers.basic import get_start, get_photo, get_hello
 from aiogram.filters import  Command
 from aiogram import F
+
+from core.settings import settings
+from core.handlers.basic import get_start, get_photo, get_hello
+from core.handlers.contact import get_fake_contact, get_true_contact
+from core.filters.iscontact import IsTrueContact
 
 
 # Small function to show that bot is running
@@ -33,6 +36,8 @@ async def start():
     dp.startup.register(start_bot)
     dp.shutdown.register(stop_bot)
     dp.message.register(get_start, Command(commands=['start', 'run']))
+    dp.message.register(get_true_contact, F.contact, IsTrueContact())
+    dp.message.register(get_fake_contact, F.contact)
     dp.message.register(get_photo, F.photo)
     dp.message.register(get_hello, F.text == 'Hello')
 
