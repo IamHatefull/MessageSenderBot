@@ -7,14 +7,17 @@ from aiogram.types import Message, ContentType
 from aiogram.filters import  Command
 from aiogram import F
 
+# Import files from project directory
 from core.settings import settings
 from core.handlers.basic import get_start, get_photo, get_hello
 from core.handlers.contact import get_fake_contact, get_true_contact
 from core.filters.iscontact import IsTrueContact
+from core.utils.commands import set_commands
 
 
 # Small function to show that bot is running
 async def start_bot(bot: Bot):
+    await set_commands(bot)
     await bot.send_message( settings.bots.admin_id, text="Bot is running")
 
 # Small function to show that bot is stopped
@@ -28,7 +31,7 @@ async def start():
                         )
     
     # Create a connection to the bot through token given by BotFather
-    bot = Bot(token=settings.bots.bot_token)
+    bot = Bot(token=settings.bots.bot_token, parse_mode='HTML')
 
     dp = Dispatcher()
     
