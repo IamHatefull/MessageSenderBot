@@ -12,6 +12,10 @@ async def set_commands(bot: Bot):
             description='Show help'
         ),
         BotCommand(
+            command='show',
+            description='Show keyboard'
+        ),
+        BotCommand(
             command='cancel',
             description='Cancel'
         )
