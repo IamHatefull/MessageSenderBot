@@ -3,6 +3,7 @@ from aiogram.types import Message
 import json
 
 from core.keyboards.reply import reply_keyboard, loc_tel_poll_keyboard, get_reply_keyboard
+from core.keyboards.inline import select_macbook
 
 async def get_start(message, bot):
     #await bot.send_message(message.from_user.id, f'Hello {message.from_user.first_name}')
