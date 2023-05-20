@@ -10,7 +10,7 @@ from aiogram import F
 # Import files from project directory
 from core.settings import settings
 from core.handlers.basic import get_start, get_photo, get_hello, get_location
-from core.handlers.basic import show_keyboard
+from core.handlers.basic import show_keyboard, get_inline
 from core.handlers.contact import get_fake_contact, get_true_contact
 from core.filters.iscontact import IsTrueContact
 from core.utils.commands import set_commands
@@ -41,6 +41,7 @@ async def start():
     dp.shutdown.register(stop_bot)
     dp.message.register(get_start, Command(commands=['start', 'run']))
     dp.message.register(show_keyboard, Command(commands=['show']))
+    dp.message.register(get_inline, Command(commands='inline'))
     dp.message.register(get_location, F.location)
     dp.message.register(get_true_contact, F.contact, IsTrueContact())
     dp.message.register(get_fake_contact, F.contact)
