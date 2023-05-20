@@ -30,5 +30,11 @@ select_macbook = InlineKeyboardMarkup(inline_keyboard=[
             text='Link',
             callback_data='https://google.com'
         )
+    ],
+    [
+        InlineKeyboardButton(
+            text='Profile',
+            callback_data='tg://user?id=66089851'
+        )
     ]
 ])
