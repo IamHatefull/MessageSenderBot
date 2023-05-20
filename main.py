@@ -12,6 +12,7 @@ from core.settings import settings
 from core.handlers.basic import get_start, get_photo, get_hello, get_location
 from core.handlers.basic import show_keyboard, get_inline
 from core.handlers.contact import get_fake_contact, get_true_contact
+from core.handlers.callback import select_macbook
 from core.filters.iscontact import IsTrueContact
 from core.utils.commands import set_commands
 
@@ -39,6 +40,7 @@ async def start():
     # Registration of all functions
     dp.startup.register(start_bot)
     dp.shutdown.register(stop_bot)
+    dp.callback_query.register(select_macbook, F.data.startswith('apple_'))
     dp.message.register(get_start, Command(commands=['start', 'run']))
     dp.message.register(show_keyboard, Command(commands=['show']))
     dp.message.register(get_inline, Command(commands='inline'))
