@@ -19,7 +19,7 @@ async def get_location(message: Message,bot: Bot):
                          f'{message.location.latitude}\r\n{message.location.longtitude}')
 
 async def get_inline(message: Message,bot: Bot):
-    await message.answer('Your inline keyboard', reply_markup= get_reply_keyboard)
+    await message.answer('Your inline keyboard', reply_markup= select_macbook)
 
 
 async def get_photo(message: Message, bot: Bot):
