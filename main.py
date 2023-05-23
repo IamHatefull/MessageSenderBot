@@ -1,6 +1,7 @@
 
 import asyncio
 import logging
+import asyncpg
 
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message, ContentType
@@ -15,6 +16,7 @@ from core.handlers.contact import get_fake_contact, get_true_contact
 from core.handlers.callback import select_macbook
 from core.filters.iscontact import IsTrueContact
 from core.utils.commands import set_commands
+from core.middlewares.dbmiddleware import DBSession
 
 
 # Small function to show that bot is running
@@ -34,10 +36,13 @@ async def start():
     
     # Create a connection to the bot through token given by BotFather
     bot = Bot(token=settings.bots.bot_token, parse_mode='HTML')
+    pool_connect = await asyncpg.create_pool(user="postgres", password='qwerty', database='users',
+                                             host='127.0.0.1', port=5432, command_timeout=60)
 
     dp = Dispatcher()
     
     # Registration of all functions
+    dp.update.middleware.register(DBSession(pool_connect))
     dp.startup.register(start_bot)
     dp.shutdown.register(stop_bot)
     dp.callback_query.register(select_macbook, F.data.startswith('apple_'))
