@@ -1,6 +1,6 @@
 import asyncpg
 
-
+# Request class
 class Request:
     def __init__(self, connector: asyncpg.pool.Pool):
         self.connector = connector
