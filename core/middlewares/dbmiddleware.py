@@ -4,6 +4,7 @@ from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 from core.utils.dbconnect import Request
 
+# Session class
 class DBSession(BaseMiddleware):
     def __init__(self, connector: asyncpg.pool.Pool):
         super().__init__()
