@@ -10,6 +10,7 @@ class Bots:
 class Settings:
     bots: Bots
 
+# Function to get bot token and admin_id from input file
 def get_settings(path: str):
     env = Env()
     env.read_env(path)
