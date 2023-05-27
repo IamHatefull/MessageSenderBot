@@ -14,6 +14,7 @@ async def get_start(message: Message, bot: Bot, request: Request):
     #await message.answer(f'Hello {message.from_user.first_name} ', reply_markup= reply_keyboard)
     #await message.reply(f'Hello {message.from_user.first_name} it is a reply')
 
+# Handler to show keyboard
 async def show_keyboard(message, bot):
     await message.answer('Your keyboard', reply_markup= get_reply_keyboard)
 
