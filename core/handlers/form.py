@@ -8,4 +8,4 @@ async def get_form(message: Message, state: FSMContext):
 
 
 async def get_name(message: Message):
-    pass
+    await message.answer(f'Your first name:\r\n{message.text}\r\nYour last name')

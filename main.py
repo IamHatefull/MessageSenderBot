@@ -17,6 +17,7 @@ from core.handlers.callback import select_macbook
 from core.handlers import form
 from core.filters.iscontact import IsTrueContact
 from core.utils.commands import set_commands
+from core.utils.statesform import StepsForm
 from core.middlewares.dbmiddleware import DBSession
 
 
@@ -47,6 +48,7 @@ async def start():
     dp.startup.register(start_bot)
     dp.shutdown.register(stop_bot)
     dp.callback_query.register(select_macbook, F.data.startswith('apple_'))
+    dp.message.register(form.get_form, StepsForm.GET_NAME)
     dp.message.register(form.get_form, Command(commands='form'))
     dp.message.register(get_start, Command(commands=['start', 'run']))
     dp.message.register(show_keyboard, Command(commands=['show']))
