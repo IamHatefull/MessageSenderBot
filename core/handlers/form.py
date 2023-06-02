@@ -12,6 +12,7 @@ async def get_name(message: Message, state: FSMContext):
     await state.update_data(name=message.text)
     await state.set_state(StepsForm.GET_LAST_NAME)
 
+# State function that expect your last name
 async def get_last_name(message: Message, state: FSMContext):
     await message.answer(f'Your last name:\r\n{message.text}\r\n now enter your age.')
     await state.update_data(last_name=message.text)
