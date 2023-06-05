@@ -41,6 +41,7 @@ async def start():
     pool_connect = await asyncpg.create_pool(user="postgres", password='qwerty', database='users',
                                              host='127.0.0.1', port=5432, command_timeout=60)
 
+    # Dispatcher object
     dp = Dispatcher()
     
     # Registration of all functions
