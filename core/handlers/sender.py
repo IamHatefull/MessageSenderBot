@@ -5,4 +5,5 @@ from aiogram.filters import CommandObject
 
 
 async def get_sender(message: Message, command: CommandObject, state: FSMContext):
-    pass
+    if not command.args:
+        await message.answer(f'')
