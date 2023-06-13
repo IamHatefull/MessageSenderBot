@@ -3,7 +3,7 @@ from aiogram import Bot
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import CommandObject
 
-
+# Sender handler
 async def get_sender(message: Message, command: CommandObject, state: FSMContext):
     if not command.args:
         await message.answer(f'Enter /sender command and sending name')
