@@ -15,6 +15,7 @@ from core.handlers.basic import show_keyboard, get_inline
 from core.handlers.contact import get_fake_contact, get_true_contact
 from core.handlers.callback import select_macbook
 from core.handlers import form
+from core.handlers import sender
 from core.filters.iscontact import IsTrueContact
 from core.utils.commands import set_commands
 from core.utils.statesform import StepsForm
@@ -55,6 +56,8 @@ async def start():
     dp.message.register(show_keyboard, Command(commands=['show']))
     dp.message.register(get_inline, Command(commands='inline'))
     dp.message.register(get_location, F.location)
+    dp.message.register(sender.get_sender, Command(commands='sender', magic=F.args),
+                        F.chat.id == settings.bots.admin_id)
     dp.message.register(get_true_contact, F.contact, IsTrueContact())
     dp.message.register(get_fake_contact, F.contact)
     dp.message.register(get_photo, F.photo)

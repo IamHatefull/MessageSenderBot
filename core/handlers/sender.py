@@ -2,6 +2,7 @@ from aiogram import Message
 from aiogram import Bot
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import CommandObject
+from core.utils.sender_state import Steps
 
 # Sender handler
 async def get_sender(message: Message, command: CommandObject, state: FSMContext):
@@ -11,4 +12,8 @@ async def get_sender(message: Message, command: CommandObject, state: FSMContext
     
     await message.answer(f'')
     await state.update_data(name_camp=command.args)
-    await state.set_state()
+    await state.set_state(Steps.get_message)
+
+
+async def get_message():
+    pass
