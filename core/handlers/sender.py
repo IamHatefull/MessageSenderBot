@@ -14,6 +14,6 @@ async def get_sender(message: Message, command: CommandObject, state: FSMContext
     await state.update_data(name_camp=command.args)
     await state.set_state(Steps.get_message)
 
-
+# Get message handler
 async def get_message():
     pass
