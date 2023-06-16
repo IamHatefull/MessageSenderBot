@@ -32,3 +32,6 @@ select_macbook = InlineKeyboardMarkup(inline_keyboard=[
         )
     ]
 ])
+
+def get_confirm_button_keyboard():
+    pass
