@@ -20,4 +20,5 @@ async def get_message(message: Message, state: FSMContext):
                          f'Should i add a button?', reply_markup = None)
     
 async def q_button(call: CallbackQuery, bot: Bot, state: FSMContext):
-    pass
+    if call.data == 'add_button':
+        await call.message.answer(f'Send text for button', reply_markup=None)
