@@ -18,7 +18,8 @@ async def get_sender(message: Message, command: CommandObject, state: FSMContext
 async def get_message(message: Message, state: FSMContext):
     await message.answer(f'Ok, i remembered the message you want to send.\r\n'
                          f'Should i add a button?', reply_markup = None)
-    
+
+#     
 async def q_button(call: CallbackQuery, bot: Bot, state: FSMContext):
     if call.data == 'add_button':
         await call.message.answer(f'Send text for button', reply_markup=None)
